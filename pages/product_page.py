@@ -35,3 +35,11 @@ class ProductPage(BasePage):
         price = self.browser.find_element(*AddPageLocators.PRODUCT_PRICE).text
         price_message = self.browser.find_element(*AddPageLocators.PRODUCT_PRICE_MESSAGE).text
         assert price == price_message, "не та цена"
+
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*AddPageLocators.SUCCESS_MESSAGE), \
+            "Success message is presented, but should not be"
+
+    def assert_is_dissappeared(self):
+        assert self.is_disappeared(*AddPageLocators.SUCCESS_MESSAGE), \
+            "Success message is presented, but should not be"
